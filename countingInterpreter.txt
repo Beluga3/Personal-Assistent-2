@@ -1,0 +1,29 @@
+:nummers
+	:basis telmechanisme
+	grootheden:	honderd, duizend, miljoen, miljard
+	tussenliggers:	twintig, dertig, veertig, vijftig, zestig, zeventig, tachtig, negentig
+	kleinheden:	een, twee, drie, vier, vijf, zes, zeven, acht, negen (,nul)
+
+		- groep van 1 getal als het deel in de groep van eenheden zit en er geen grootheid of "en" achter staat		PARAMETER E		ACTIE:
+			(bijvoorbeeld "drie" = 3)									
+		- groep van 1 als het deel alleen maar één grootheid of tussenligger is 					PARAMETER E		ACTIE:	
+		- groep van 2 getallen als het deel gevolgd word door een grootheid						PARAMETER G+		ACTIE:	vermenig [0*1]
+		- als twee opeenvolgende groepen bestaan uit alleen maar grootheden, moeten deze vermenigvuldigd worden en in één groep gezet worden	
+			<honderd> <duizend>	--> <honderd|duizend>  --> <100.000> 						PARAMETER G		ACTIE:	vermenig [0]*[1]
+		- groep van 2 getallen als er een tussenligger ('en ...') achter een kleinheid komt 				PARAMETER T		ACTIE:  optellen [0]+[1]
+			<twee en vijftig> --> <twee|vijftig (T)>
+
+	honderd duizend zes honderd twee en vijftig
+	<honderd|duizend (G)> <zes|honderd (G+)> <twee|vijftig (T)>
+
+	zest tien
+	<zes|tien (T)>
+
+	drie honderd zes
+	<drie|honderd (G+)> <zes (E)>
+
+		Hieruit volgt een sequentie aan letters. deze zijn als volgt op te lossen.
+			voer de G+ actie uit bij setjes waar G+ bij staat		<zes|honderd (G+)> --> (zes*honderd)
+			voer de T actie uit bij setjes waat T bij staat			<twee|vijftig (T)> --> (twee+vijftig)
+			als alle G en T acties uitgevoerd zijn;
+			zet alle E waardes met een + aan het eind van de som		<zes (E)>	   --> + zes
